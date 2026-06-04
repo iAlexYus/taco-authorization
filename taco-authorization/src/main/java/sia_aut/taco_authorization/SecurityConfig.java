@@ -1,6 +1,7 @@
 package sia_aut.taco_authorization;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +15,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(aut -> aut
                         .anyRequest().authenticated());
-        http.formLogin();
+        http.formLogin(Customizer.withDefaults());
         return http.build();
     }
 
